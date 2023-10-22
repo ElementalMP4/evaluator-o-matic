@@ -1,9 +1,20 @@
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <math.h>
 #include "../stack/stack.h"
 #include "../evaluator/evaluator.h"
 #include "../operator/operator.h"
+
+double factorial(double num)
+{
+    double fac = 1;
+    for (int i = 1; i <= num; i++)
+    {
+        fac = fac * i;
+    }
+    return fac;
+}
 
 double evaluateExpression(int argc, char **argv)
 {
@@ -19,6 +30,7 @@ double evaluateExpression(int argc, char **argv)
         char *end_ptr;
         result_d = strtod(token, &end_ptr);
 
+        // If end_ptr is a null byte then *token is a number
         if (*end_ptr == '\0')
         {
             pushOperand(&stack, result_d);
@@ -51,6 +63,10 @@ double evaluateExpression(int argc, char **argv)
                 op_a = popOperand(&stack);
                 op_b = popOperand(&stack);
                 pushOperand(&stack, op_b - op_a);
+                break;
+            case FACTORIAL:
+                op_a = popOperand(&stack);
+                pushOperand(&stack, factorial(op_a));
                 break;
             default:
                 printf("Invalid token %s\n", token);

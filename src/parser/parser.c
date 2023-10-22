@@ -17,6 +17,7 @@ int getPrecedence(char *token)
     case DIVIDE:
         return 2;
     case EXPONENT:
+    case FACTORIAL:
         return 3;
     default:
         return 0;

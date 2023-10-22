@@ -8,6 +8,7 @@ enum operator_e
     DIVIDE = '/',
     MULTIPLY = '*',
     EXPONENT = '^',
+    FACTORIAL = '!',
 };
 
 #endif
