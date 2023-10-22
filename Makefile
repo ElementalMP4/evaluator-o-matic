@@ -1,2 +1,2 @@
 build:
-	gcc src/main.c src/*/*.c -o evaluator-o-matic
+	gcc src/main.c src/*/*.c -o evaluator-o-matic -lm
